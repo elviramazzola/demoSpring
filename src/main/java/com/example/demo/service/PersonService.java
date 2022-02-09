@@ -154,5 +154,20 @@ public class PersonService {
         return result;
 
     }
+    public List<Person> getPersonByWork(String work){
+        Iterable<Work> workIterable = workRepository.findAll();
+        Iterator<Work> iterator = workIterable.iterator();
+        List<Person> personList = new ArrayList<>();
+        Person person;
+
+        while(iterator.hasNext()){
+            Work workDB = iterator.next();
+            if(workDB.getWorkName().equalsIgnoreCase(work)){
+                person = workDB.getPerson();
+                personList.add(person);
+            }
+        }
+        return personList;
+    }
 
 }

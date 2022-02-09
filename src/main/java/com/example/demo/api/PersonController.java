@@ -62,6 +62,11 @@ public class PersonController {
         return personService.getWorkByPerson(name, surname);
     }
 
+    @GetMapping(path = "/person-by-work")
+    public List<Person> getPersonByWork(@RequestParam ("work") String work){
+        return personService.getPersonByWork(work);
+    }
+
 
 
 }
